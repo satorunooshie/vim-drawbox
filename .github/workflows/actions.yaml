@@ -1,0 +1,30 @@
+name: actions
+on: [push, pull_request]
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          check-latest: true
+          go-version-file: cmd/go.mod
+      - uses: golangci/golangci-lint-action@v3
+        with:
+          working-directory: ./cmd
+          args: -c ../.github/workflows/.golangci.yaml
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./cmd
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          check-latest: true
+          go-version-file: cmd/go.mod
+      - name: Test
+        run: go test -v ./...
