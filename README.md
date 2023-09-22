@@ -8,6 +8,7 @@ vim-drawbox plugin enable to draw ASCII diagrams in `blockwise-visual` mode.
 ## Usage
 1. Select a rectangle via blockwise-visual mode.
 2. Invoke a draw command.
+3. (Optional) Use in combination with [ditaa](https://ditaa.sourceforge.net/) for graphic output etc...
 
 ## Installation
 This plugin executes [drawbox](https://github.com/satorunooshie/vim-drawbox/tree/main/cmd).
