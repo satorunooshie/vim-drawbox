@@ -9,19 +9,28 @@ vnoremap +mcb :<C-u>call drawbox#draw_with_label("+mcb", [])<CR>
 
 " middle left labeled rectangle
 vnoremap +[O :<C-u>call drawbox#draw_with_label("+[O", [])<CR>
-vnoremap mlb :<C-u>call drawbox#draw_with_label("+mlb", [])<CR>
+vnoremap +mlb :<C-u>call drawbox#draw_with_label("+mlb", [])<CR>
 " middle right labeled rectangle
 vnoremap +]O :<C-u>call drawbox#draw_with_label("+]O", [])<CR>
 vnoremap +mrb :<C-u>call drawbox#draw_with_label("+mrb", [])<CR>
+
 " top center labeled rectangle
-vnoremap +{[O :<C-u>call drawbox#draw_with_label("+{[O", [])<CR>
+vnoremap +{O :<C-u>call drawbox#draw_with_label("+{O", [])<CR>
 vnoremap +tcb :<C-u>call drawbox#draw_with_label("+tcb", [])<CR>
+" bottom center labeled rectangle
+vnoremap +}O :<C-u>call drawbox#draw_with_label("+}O", [])<CR>
+vnoremap +bcb :<C-u>call drawbox#draw_with_label("+bcb", [])<CR>
+
+" top left labeled rectangle
+vnoremap +{[O :<C-u>call drawbox#draw_with_label("+{[O", [])<CR>
+vnoremap +tlb :<C-u>call drawbox#draw_with_label("+tlb", [])<CR>
 " top right labeled rectangle
 vnoremap +{]O :<C-u>call drawbox#draw_with_label("+{]O", [])<CR>
 vnoremap +trb :<C-u>call drawbox#draw_with_label("+trb", [])<CR>
-" bottom center labeled rectangle
+
+" bottom left labeled rectangle
 vnoremap +}[O :<C-u>call drawbox#draw_with_label("+}[O", [])<CR>
-vnoremap +bcb :<C-u>call drawbox#draw_with_label("+bcb", [])<CR>
+vnoremap +blb :<C-u>call drawbox#draw_with_label("+blb", [])<CR>
 " bottom right labeled rectangle
 vnoremap +}]O :<C-u>call drawbox#draw_with_label("+}]O", [])<CR>
 vnoremap +brb :<C-u>call drawbox#draw_with_label("+brb", [])<CR>

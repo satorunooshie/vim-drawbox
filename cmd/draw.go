@@ -51,59 +51,70 @@ func exec(cmd string, lines []string, y1, x1, y2, x2 int, args ...string) []stri
 		text = strings.Join(args, " ")
 	}
 	switch cmd {
-	case "+o":
+	// Box drawing.
+	case "+o": // rectangle.
 		return drawBox(lines, y1, x1, y2, x2)
-	case "+O", "+mcb":
+	case "+O", "+mcb": // labeled rectangle.
 		return drawBoxWithLabel(lines, y1, x1, y2, x2, middle, center, text)
-	case "+[O", "+mlb":
+
+	case "+[O", "+mlb": // middle left labeled rectangle.
 		return drawBoxWithLabel(lines, y1, x1, y2, x2, middle, left, text)
-	case "+]O", "+mrb":
+	case "+]O", "+mrb": // middle right labeled rectangle.
 		return drawBoxWithLabel(lines, y1, x1, y2, x2, middle, right, text)
-	case "+{O", "+tmb":
+
+	case "+{O", "+tcb": // top center labeled rectangle.
 		return drawBoxWithLabel(lines, y1, x1, y2, x2, top, middle, text)
-	case "+}O", "+bmb":
+	case "+}O", "+bcb": // bottom center labeled rectangle.
 		return drawBoxWithLabel(lines, y1, x1, y2, x2, bottom, middle, text)
-	case "+{[O", "+tlb":
+
+	case "+{[O", "+tlb": // top left labeled rectangle.
 		return drawBoxWithLabel(lines, y1, x1, y2, x2, top, left, text)
-	case "+{]O", "+trb":
+	case "+{]O", "+trb": // top right labeled rectangle.
 		return drawBoxWithLabel(lines, y1, x1, y2, x2, top, right, text)
-	case "+}[O", "+blb":
+
+	case "+}[O", "+blb": // bottom left labeled rectangle.
 		return drawBoxWithLabel(lines, y1, x1, y2, x2, bottom, left, text)
-	case "+}]O", "+brb":
+	case "+}]O", "+brb": // bottom right labeled rectangle.
 		return drawBoxWithLabel(lines, y1, x1, y2, x2, bottom, right, text)
-	case "+c", "+mcl":
+
+		// Labeling.
+	case "+c", "+mcl": // middle center labeling.
 		return fillBox(lines, y1, x1, y2, x2, middle, center, text)
-	case "+[c", "+mll":
+	case "+[c", "+mll": // middle left labeling.
 		return fillBox(lines, y1, x1, y2, x2, middle, left, text)
-	case "+]c", "+mrl":
+	case "+]c", "+mrl": // middle right labeling.
 		return fillBox(lines, y1, x1, y2, x2, middle, right, text)
-	case "+{c", "+tcl":
+	case "+{c", "+tcl": // top center labeling.
 		return fillBox(lines, y1, x1, y2, x2, top, center, text)
-	case "+}c", "+bcl":
+	case "+}c", "+bcl": // bottom center labeling.
 		return fillBox(lines, y1, x1, y2, x2, bottom, center, text)
-	case "+{[c", "+tll":
+	case "+{[c", "+tll": // top left labeling.
 		return fillBox(lines, y1, x1, y2, x2, top, left, text)
-	case "+{]c", "+trl":
+	case "+{]c", "+trl": // top right labeling.
 		return fillBox(lines, y1, x1, y2, x2, top, right, text)
-	case "+}[c", "+bll":
+	case "+}[c", "+bll": // bottom left labeling.
 		return fillBox(lines, y1, x1, y2, x2, bottom, left, text)
-	case "+}]c", "+brl":
+	case "+}]c", "+brl": // bottom right labeling.
 		return fillBox(lines, y1, x1, y2, x2, bottom, right, text)
-	case "+>", "+<":
+
+		// Line drawing.
+	case "+>", "+<": // horizontal line.
 		return drawLineVH(lines, y1, x1, y2, x2, "-->")
-	case "+V", "+v", "+^":
+	case "+V", "+v", "+^": // vertical line.
 		return drawLineHV(lines, y1, x1, y2, x2, "-->")
-	case "++>", "++<":
+	case "++>", "++<": // double horizontal line.
 		return drawLineVH(lines, y1, x1, y2, x2, "<->")
-	case "++V", "++v", "++^":
+	case "++V", "++v", "++^": // double vertical line.
 		return drawLineHV(lines, y1, x1, y2, x2, "<->")
-	case "+-", "+_":
+	case "+-", "+_": // horizontal line.
 		return drawLineVH(lines, y1, x1, y2, x2, "---")
-	case "+|":
+	case "+|": // vertical line.
 		return drawLineHV(lines, y1, x1, y2, x2, "---")
-	case "ao", "ab":
+
+		// Selection.
+	case "ao", "ab": // outer box.
 		return selectOuterBox(lines, y1, x1, y2, x2)
-	case "io", "ib":
+	case "io", "ib": // inner box.
 		return selectInnerBox(lines, y1, x1, y2, x2)
 	}
 	return nil
