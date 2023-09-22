@@ -1,0 +1,292 @@
+*drawbox.txt* - Draw Box
+
+Version : 0.0.1
+Author  : Satoru Kitaguchi
+License : MIT license  {{{
+    Permission is hereby granted, free of charge, to any person obtaining
+    a copy of this software and associated documentation files (the
+    "Software"), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:
+    The above copyright notice and this permission notice shall be included
+    in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+}}}
+
+==============================================================================
+CONTENTS					*drawbox-contents*
+
+INTRODUCTION			|drawbox-introduction|
+USAGE				|drawbox-usage|
+INTERFACE			|drawbox-interface|
+  KEY-MAPPINGS			  |drawbox-key-mappings|
+  FUNCTIONS			  |drawbox-functions|
+CHANGELOG			|drawbox-changelog|
+
+
+==============================================================================
+INTRODUCTION					*drawbox-introduction*
+
+*drawbox* is a Vim plugin that enables to draw ASCII diagram
+in |blockwise-visual| mode.
+
+This plugin executes [drawbox]
+(https://github.com/satorunooshie/vim-drawbox/tree/main/cmd), so please make
+sure the installed binary is executable.
+
+Latest version:
+https://github.com/satorunooshie/vim-drawbox
+
+
+==============================================================================
+USAGE						*drawbox-usage*
+
+- Select a rectangle via blockwise-visual mode.
+- Invoke a draw command.
+
+==============================================================================
+INTERFACE					*drawbox-interface*
+
+------------------------------------------------------------------------------
+KEY-MAPPINGS					*drawbox-key-mappings*
+
+|drawbox.vim| defines the following keymappings and all commands are mapped to
+the `+` prefix.
+
+DRAWING RECTANGLES                         *drawbox-rectangles*
+
+                                           *drawbox-+o*
++o                           Draw a rectangle, clear its contents with
+                             whitespace.
+
+                                           *drawbox-+O* *drawbox-+mcb*
++O or +mcb                   Draw a rectangle, fill it with a label.
+
+                                           *drawbox-+[O* *drawbox-+mlb*
++[O or +mlb                  Draw a rectangle, fill it with a left
+                             aligned label.
+
+                                           *drawbox-+]O* *drawbox-+mrb*
++]O or +mrb                  Draw a rectangle, fill it with a right
+                             aligned label.
+
+                                           *drawbox-+{O* *drawbox-+tcb*
++{O or +tcb                  Draw a rectangle, fill it with a label on
+                             top.
+
+                                           *drawbox-+}O* *drawbox-+bcb*
++}O or +bcb                  Draw a rectangle, fill it with a label on
+                             bottom.
+
+                                           *drawbox-+{[O* *drawbox-+tlb*
++{[O or +tlb                 Draw a rectangle, fill it with a left
+                             aligned label on top.
+
+                                           *drawbox-+{]O* *drawbox-+trb*
++{]O or +trb                 Draw a rectangle, fill it with a right
+                             aligned label on top.
+
+                                           *drawbox-+}[O* *drawbox-+blb*
++}[O or +blb                 Draw a rectangle, fill it with a left
+                             aligned label on bottom.
+
+                                           *drawbox-+}]O* *drawbox-+brb*
++}]O or +brb                 Draw a rectangle, fill it with a bottom
+right label.
+
+
+LABELLING RECTANGLES
+                                           *drawbox-+c* *drawbox-+mcl*
++c or +mcl                   Fill the rectangle with a label.
+
+                                           *drawbox-+[c* *drawbox-+mll*
++[c or +mll                  Fill the rectangle with a left aligned
+                             label.
+
+                                           *drawbox-+]c* *drawbox-+mrl*
++]c or +mrl                  Fill the rectangle with a right aligned
+                             label.
+
+                                           *drawbox-+{c* *drawbox-+tcl*
++{c or +tcl                  Fill the rectangle with a label on top.
+
+                                           *drawbox-+{[c* *drawbox-+tll*
++{[c or +tll                 Fill the rectangle with a left aligned label 
+                             on top.
+
+                                           *drawbox-+{]c* *drawbox-+trl*
++{]c or +trl                 Fill the rectangle with a right aligned
+                             label on top.
+
+                                           *drawbox-+}c* *drawbox-+bcl*
++}c or +bcl                  Fill the rectangle with a label on bottom.
+
+                                           *drawbox-+{[c* *drawbox-+bll*
++}[c or +bll                 Fill the rectangle with a left aligned label 
+                             on bottom.
+
+                                           *drawbox-+{]c* *drawbox-+brl*
++}]c or +brl                 Fill the rectangle with a right aligned
+                             label on bottom.
+
+DRAWING LINES                              *drawbox-lines*
+
+The following commands draw a one-segment or two-segment line.
+
+- Select a rectangle in |blockwise-visual| mode. The line will always go from
+  the start corner to the end corner.
+- Press `+` and the character that you want to end the line with. vim-drawbox
+  will figure out whether the line should be vertical-horizontal or
+  horizontal-vertical, and which direction the arrow should go.
+- Press `+` twice if you want to make an arrow on both sides of the line.
+
+See the examples below for full reference. 1 and 2 indicates the start/end
+position of the selection.
+
+                                           *drawbox-+-* *drawbox-+_*
++- or +_                     Draw a line that ends with a horizontal line:
+
+                             1.......    |.......     2.......    -------+
+                             ........ => |.......     ........ => .......|
+                             .......2    +-------     .......1    .......|
+
+
+                             .......2    +-------     .......1    .......|
+                             ........ => |.......     ........ => .......|
+                             1.......    |.......     2.......    -------+
+
+
+                             ........    ........     ........    ........
+                             1......2 => --------     2......1 => --------
+                             ........    ........     ........    ........
+
+                                           *drawbox-+>* *drawbox-+<*
++> or +<                     Draw a line that ends with a horizontal arrow:
+
+                             1.......    |.......     2.......    <------+
+                             ........ => |.......     ........ => .......|
+                             .......2    +------>     .......1    .......|
+
+                             .......2    +------>     .......1    .......|
+                             ........ => |.......     ........ => .......|
+                             1.......    |.......     2.......    <------+
+
+                             ........    ........     ........    ........
+                             1......2 => ------->     2......1 => <-------
+                             ........    ........     ........    ........
+
+                                           *drawbox-++>* *drawbox-++<*
+++> or ++<                   Draw a line that ends with a horizontal arrow,
+                             and has an arrow on both sides of the line:
+
+                             1.......    ^.......     2.......    <------+
+                             ........ => |.......     ........ => .......|
+                             .......2    +------>     .......1    .......v
+
+                             .......2    +------>     .......1    .......^
+                             ........ => |.......     ........ => .......|
+                             1.......    v.......     2.......    <------+
+
+                             ........    ........     ........    ........
+                             1......2 => <------>     2......1 => <------>
+                             ........    ........     ........    ........
+
+                                           *drawbox-+|*
++|                           Draw a line that ends with a vertical line:
+
+                             1.......    -------+     2.......    |.......
+                             ........ => .......|     ........ => |.......
+                             .......2    .......|     .......1    +-------
+
+
+                             .......2    .......|     .......1    +-------
+                             ........ => .......|     ........ => |.......
+                             1.......    -------+     2.......    |.......
+
+
+                             1.......    |.......     2.......    |.......
+                             ........ => |.......     ........ => |.......
+                             2.......    |.......     1.......    |.......
+
+
+                                           *drawbox-+^* *drawbox-+v* *drawbox-+V*
++^, +v or +V                 Draw a line that ends with a vertical arrow.
+
+                             1.......    -------+     2.......    ^.......
+                             ........ => .......|     ........ => |.......
+                             .......2    .......v     .......1    +-------
+
+
+                             .......2    .......^     .......1    +-------
+                             ........ => .......|     ........ => |.......
+                             1.......    -------+     2.......    v.......
+
+
+                             1.......    |.......     2.......    ^.......
+                             ........ => |.......     ........ => |.......
+                             2.......    v.......     1.......    |.......
+
+                                           *drawbox-++^* *drawbox-++v* *drawbox-++V*
+++^, ++v or ++V              Draw a line that ends with a vertical arrow,
+                             and has an arrow on both sides of the line:
+
+                             1.......    <------+     2.......    ^.......
+                             ........ => .......|     ........ => |.......
+                             .......2    .......v     .......1    +------>
+
+
+                             .......2    .......^     .......1    +------>
+                             ........ => .......|     ........ => |.......
+                             1.......    <------+     2.......    v.......
+
+
+                             1.......    ^.......     2.......    ^.......
+                             ........ => |.......     ........ => |.......
+                             2.......    v.......     1.......    v.......
+
+SELECTING OBJECTS                          *drawbox-select*
+
+Select commands also work in |blockwise-visual| mode: start a selection,
+then press one of the following mappings to select an object:
+
+                                           *drawbox-+io* *drawbox-+ib*
++io or +ib                    Select current rectangle, without borders.
+
+                                           *drawbox-+ao* *drawbox-+ab*
++ao or +ab                     Select current rectangle, with borders.
+
+------------------------------------------------------------------------------
+FUNCTIONS					*drawbox-functions*
+
+drawbox#draw({cmd}, {args})			*drawbox#draw()*
+draw a rectangle without a label.
+
+
+drawbox#draw_with_label({cmd}, {args})		*drawbox#draw_with_label()*
+draw a rectangle with a label.
+
+drawbox#get_end_pos()				*drawbox#get_end_pos()*
+get end position.
+
+drawbox#get_start_pos({startPos})		*drawbox#get_start_pos()*
+get start position.
+
+drawbox#select({cmd})				*drawbox#select()*
+
+==============================================================================
+CHANGELOG					*drawbox-changelog*
+
+0.0.1:
+- Initial version
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:
