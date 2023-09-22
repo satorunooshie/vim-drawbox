@@ -9,11 +9,11 @@ vim-drawbox plugin enable to draw ASCII diagrams in `blockwise-visual` mode.
 1. Select a rectangle via blockwise-visual mode.
 2. Invoke a draw command.
 
-## Requirements
-[Go](https://github.com/golang/go)
-
 ## Installation
 This plugin executes [drawbox](https://github.com/satorunooshie/vim-drawbox/tree/main/cmd).
+
+The binary can be installed from [Releases](https://github.com/satorunooshie/vim-drawbox/releases) or use the following command if already installed [Go](https://github.com/golang/go).
+
 ```
 cd cmd && go install
 ```
