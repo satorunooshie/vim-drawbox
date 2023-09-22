@@ -1,6 +1,8 @@
 # vim-drawbox - Draw ASCII diagrams in Vim
 [gyim/vim-boxdraw](https://github.com/gyim/vim-boxdraw)'s Go version.
 
+[![See vim-boxdraw in action](https://asciinema.org/a/qeig6TH6N4uteq7J6n4epUGaq.png)](https://asciinema.org/a/qeig6TH6N4uteq7J6n4epUGaq)
+
 vim-drawbox plugin enable to draw ASCII diagrams in `blockwise-visual` mode.
 
 ## Usage
