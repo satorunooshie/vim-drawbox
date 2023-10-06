@@ -101,7 +101,7 @@ DRAWING RECTANGLES                         *drawbox-rectangles*
 
                                            *drawbox-+}]O* *drawbox-+brb*
 +}]O or +brb                 Draw a rectangle, fill it with a bottom
-right label.
+                             right label.
 
 
 LABELLING RECTANGLES
@@ -130,11 +130,11 @@ LABELLING RECTANGLES
                                            *drawbox-+}c* *drawbox-+bcl*
 +}c or +bcl                  Fill the rectangle with a label on bottom.
 
-                                           *drawbox-+{[c* *drawbox-+bll*
+                                           *drawbox-+}[c* *drawbox-+bll*
 +}[c or +bll                 Fill the rectangle with a left aligned label 
                              on bottom.
 
-                                           *drawbox-+{]c* *drawbox-+brl*
+                                           *drawbox-+}]c* *drawbox-+brl*
 +}]c or +brl                 Fill the rectangle with a right aligned
                              label on bottom.
 
